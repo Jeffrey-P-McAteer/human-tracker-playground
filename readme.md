@@ -3,6 +3,11 @@
 
 Jeff's R&D into using mmWave radar to track x,y locations of people in buildings.
 
+# Parts
+
+ - https://a.co/d/0i4YfnZb
+ - https://a.co/d/0cmmnirq
+ - breadboard etc
 
 # Dependencies
 
@@ -15,7 +20,6 @@ arduino-cli core update-index
 arduino-cli core install arduino:avr
 
 ```
-
 
 # Building & Running
 
