@@ -1,13 +1,18 @@
 #!/bin/bash
 
-set -ex
+set -e
 
-arduino-cli compile --fqbn arduino:avr:uno
+run_cmd() {
+  echo "> " "$@"
+  "$@"
+}
+
+run_cmd arduino-cli compile --fqbn arduino:avr:uno
 
 deploy_program() {
-  arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno
+  run_cmd arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno
   sleep 1
-  arduino-cli monitor -p /dev/ttyACM0 -b arduino:avr:uno
+  run_cmd arduino-cli monitor -p /dev/ttyACM0 -b arduino:avr:uno
 }
 
 while true; do
