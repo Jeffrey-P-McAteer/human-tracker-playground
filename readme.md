@@ -37,3 +37,8 @@ arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno
 arduino-cli board list
 
 ```
+
+# Resources because Jeff is not an EE
+
+ - https://resistorcolorcodecalc.com/
+
