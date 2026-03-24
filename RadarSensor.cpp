@@ -21,20 +21,24 @@ bool RadarSensor::update() {
 
     switch(state) {
       case WAIT_AA:
+        // printf("WAIT_AA\n");
         if(byteIn == 0xAA) state = WAIT_FF;
         break;
 
       case WAIT_FF:
+        printf("WAIT_FF\n");
         if(byteIn == 0xFF) state = WAIT_03;
         else state = WAIT_AA;
         break;
 
       case WAIT_03:
+        // printf("WAIT_03\n");
         if(byteIn == 0x03) state = WAIT_00;
         else state = WAIT_AA;
         break;
 
       case WAIT_00:
+        // printf("WAIT_00\n");
         if(byteIn == 0x00) {
           index = 0;
           state = RECEIVE_FRAME;
@@ -42,6 +46,7 @@ bool RadarSensor::update() {
         break;
 
       case RECEIVE_FRAME:
+        printf("RECEIVE_FRAME\n");
         buffer[index++] = byteIn;
         if(index >= 26) { // 24 bytes data + 2 tail bytes
           if(buffer[24] == 0x55 && buffer[25] == 0xCC) {
@@ -57,6 +62,7 @@ bool RadarSensor::update() {
 }
 
 bool RadarSensor::parseData(const uint8_t *buf, size_t len) {
+  printf("len = %d\n", len);
   if(len != 24)
     return false;
 
