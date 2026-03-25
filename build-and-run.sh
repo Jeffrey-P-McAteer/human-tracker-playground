@@ -12,7 +12,7 @@ run_cmd arduino-cli compile --fqbn arduino:avr:uno
 deploy_program() {
   run_cmd arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno
   sleep 1
-  run_cmd arduino-cli monitor -p /dev/ttyACM0 -b arduino:avr:uno
+  run_cmd arduino-cli monitor -p /dev/ttyACM0 -b arduino:avr:uno -c baudrate=115200
 }
 
 while true; do
