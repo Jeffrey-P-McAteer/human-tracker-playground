@@ -63,8 +63,8 @@ void loop() {
     ms_since_led_toggled = 0;
   }
 
-  delay(100);
-  ms_since_led_toggled += 100;
+  delay(1);
+  ms_since_led_toggled += 1;
 
   if (radar.update()) {
     RadarTarget tgt = radar.getTarget();

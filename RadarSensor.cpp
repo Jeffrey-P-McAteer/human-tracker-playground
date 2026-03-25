@@ -19,6 +19,11 @@ bool RadarSensor::update() {
   while (radarSerial.available()) {
     byte byteIn = radarSerial.read();
 
+    Serial.print("byteIn = ") ;
+    Serial.print(byteIn>>4,  HEX);
+    Serial.print(byteIn&0x0F,HEX);
+    Serial.println();
+
     switch(state) {
       case WAIT_AA:
         // printf("WAIT_AA\n");
